@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="./styles/personal.css" type="text/css" rel="stylesheet">
+    <title>Chat App</title>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-info">
+    <button type="button" class="btn btn-info navbar-btn" id="profile">
+        <span class="glyphicon glyphicon-plus"></span> 
+        Profile
+      </button>
+
+      <button type="button" class="btn btn-info navbar-btn" id="personal">
+        <span class="glyphicon glyphicon-plus"></span> 
+        Personal Chats
+      </button>
+
+      <button type="button" class="btn btn-info navbar-btn" id="group">
+        <span class="glyphicon glyphicon-plus"></span> 
+        Group Chats
+      </button>
+  </nav>
+
+    <div class="container" id="personalChats" style="display:none;">
+        <h3 class="text-info text-center">Messaging</h3>
+        <div class="text-center"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalRegisterForm">Add Contact</button></div>
+        <br>
+        <div class="messaging">
+              <div class="inbox_msg">
+                <div class="inbox_people">
+                  <div class="headind_srch">
+                    <div class="recent_heading">
+                      <h4>Recent</h4>
+                    </div>
+                    <div class="srch_bar">
+                      <div class="stylish-input-group">
+                        <input type="text" class="search-bar"  placeholder="Search" >
+                        <span class="input-group-addon">
+                        <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                        </span> </div>
+                    </div>
+                  </div>
+                  <div class="inbox_chat" id="chatList">
+                  </div>
+                </div>
+                <div class="mesgs" id="mesgs">
+                  <nav class="navbar navbar-light bg-light" id="personalNavHeader">
+                    <form class="form-inline">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <input type="text" id="usernameHeader" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" readonly>
+                      </div>
+                    </form>
+                  </nav>
+                  <div class="msg_history" id="msgHistory">
+                  </div>
+                  <div class="type_msg" >
+                    <div class="input_msg_write" style="display:flex;">
+                      <div style="display:flex;flex-direction:column;">
+                      <input type="file" id="personalImageInput" style="display:none;">
+                      <label for="personalImageInput" class="btn-info"><i class="fa fa-paperclip" aria-hidden="true"></i></label>
+                      <button class="btn-info" type="button" id="personalImageSubmit"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
+                      </div>
+                      <textarea type="text" class="write_msg" placeholder="Type a message" id="chatInput" style="box-sizing:border-box;
+                      width:100%;"></textarea>
+                      <button class="msg_send_btn" type="button" id="chatSubmit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h4 class="modal-title w-100 font-weight-bold">Enter Username</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body mx-3">
+                <input type="text" id="addContactName" class="form-control validate">
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button class="btn btn-deep-orange" id="submitContactName">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="profilePage" style="display:none;">
+        <div class="container bootstrap snippets bootdey">
+          <h3 class="text-info text-center">Edit Profile</h3>
+            <hr>
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-3">
+              <div class="text-center">
+                <img src="" class="avatar img-circle img-thumbnail" alt="avatar" id="image" name="image"/>
+              </div>
+            </div>
+            
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+              <h3>Personal info</h3>
+              
+              <form class="form-horizontal" role="form" name="profileForm" id="profileForm">
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">First name:</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" type="text" value="" name="fname" id="fname">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Last name:</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" type="text" value="" name="lname" id="lname">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Username</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" type="text" value="" name="username" id="username" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">tag</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" type="text" value="" id="tag" name="tag">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-md-8">
+                    <button type="button" class="btn btn-info" id="saveProfile">Save Changes</button>
+                  </div>
+                </div>
+              </form>
+          <hr>
+          </div>
+      </div>
+      </div>
+      </div>
+      
+      <div class="container" id="groupChats" style="display:none;">
+        <h3 class="text-info text-center">Group Chats</h3>
+        <div class="text-center"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalGroupForm">Add Group</button></div>
+        <br>
+        <div class="messaging">
+              <div class="inbox_msg">
+                <div class="inbox_people">
+                  <div class="headind_srch">
+                    <div class="recent_heading">
+                      <h4>Recent</h4>
+                    </div>
+                    <div class="srch_bar">
+                      <div class="stylish-input-group">
+                        <input type="text" class="search-bar"  placeholder="Search" >
+                        <span class="input-group-addon">
+                        <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                        </span> </div>
+                    </div>
+                  </div>
+                  <div class="inbox_chat" id="groupChatList">
+                  </div>
+                </div>
+                <div class="mesgs" id="groupMesgs">
+                  <nav class="navbar navbar-light bg-light" id="groupNavHeader">
+                    <form class="form-inline" id="groupNav">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <input type="text" id="groupnameHeader" class="form-control" placeholder="Groupname" aria-label="Groupname" aria-describedby="basic-addon1" readonly>
+                      </div>
+                    </form>
+                  </nav>
+                  <div class="msg_history" id="groupMsgHistory">
+                  </div>
+                  <div class="type_msg" >
+                    <div class="input_msg_write" style="display:flex;">
+                      <div style="display:flex;flex-direction:column;">
+                        <input type="file" id="groupImageInput" style="display:none;">
+                        <label for="groupImageInput" class="btn-info"><i class="fa fa-paperclip" aria-hidden="true"></i></label>
+                        <button class="btn-info" type="button" id="groupImageSubmit"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
+                        </div>
+                      <textarea type="text" class="write_msg" placeholder="Type a message" id="chatGroupInput" style="box-sizing:border-box;
+                      width:100%;"></textarea>
+                      <button class="msg_send_btn" type="button" id="chatGroupSubmit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalGroupForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h4 class="modal-title w-100 font-weight-bold">Enter Groupname</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body mx-3">
+                <input type="text" id="addGroupName" class="form-control validate">
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button class="btn btn-deep-orange" id="submitGroupName">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modalGroupNormalUserForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Enter Username</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+              <input type="text" id="addGroupNormalName" class="form-control validate">
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-deep-orange" id="submitGroupNormalName">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalMakeAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Enter Username</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+              <input type="text" id="addMakeAdmin" class="form-control validate">
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-deep-orange" id="submitMakeAdmin">Make Admin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="seeMembers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <!-- <h4 class="modal-title w-100 font-weight-bold">Enter Username</h4> -->
+          <div id="seeMembersModalHeader">
+
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body mx-3" id="seeMembersModalBody">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="./scripts/mastercontrol.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./scripts/socketio.js"></script>
+    <script src="./scripts/personal.js"></script>
+    <script src="./scripts/messaging.js"></script>
+    <script src="./scripts/profile.js"></script>
+    <script src="./scripts/group.js"></script>
+    <script src="./scripts/adminbutton.js"></script>
+    <script src="./scripts/groupchats.js"></script>
+    <script src="./scripts/typing.js"></script>
+    <script src="./scripts/personalimage.js"></script>
+    <script src="./scripts/groupimage.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+</body>
+</html>
